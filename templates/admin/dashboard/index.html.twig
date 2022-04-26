@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello! ✅</h1>
 
     This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/task-my-project/src/Controller/Admin/DashboardController.php'|file_link(0) }}">src/Controller/Admin/DashboardController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/task-my-project/templates/admin/dashboard/index.html.twig'|file_link(0) }}">templates/admin/dashboard/index.html.twig</a></code></li>
+        <li><a href="{{ path('ticket_new') }}">Category Add</a></li>
+        <li><a href="#">Ticket Add</a></li>
     </ul>
 </div>
 {% endblock %}
