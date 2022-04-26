@@ -22,6 +22,9 @@ class Ticket
     #[ORM\Column(type: 'integer')]
     private $status;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'tickets')]
+    private $Category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Ticket
     public function setStatus(int $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?Category $Category): self
+    {
+        $this->Category = $Category;
 
         return $this;
     }
