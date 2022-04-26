@@ -25,6 +25,9 @@ class Ticket
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'tickets')]
     private $Category;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'tickets')]
+    private $User;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Ticket
     public function setCategory(?Category $Category): self
     {
         $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }
