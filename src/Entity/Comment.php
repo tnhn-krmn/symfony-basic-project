@@ -16,6 +16,9 @@ class Comment
     #[ORM\Column(type: 'string', length: 255)]
     private $text;
 
+    #[ORM\ManyToOne(targetEntity: Ticket::class, inversedBy: 'comments')]
+    private $Ticket;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Comment
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getTicket(): ?Ticket
+    {
+        return $this->Ticket;
+    }
+
+    public function setTicket(?Ticket $Ticket): self
+    {
+        $this->Ticket = $Ticket;
 
         return $this;
     }
