@@ -6,10 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Category;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Entity\Category;
+use App\Entity\Ticket;
 
 
 
@@ -57,6 +58,17 @@ class DashboardController extends AbstractController
 
         return $this->render('admin/dashboard/category-add.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/admin/ticket-list', name: 'ticket_list')]
+    public function ticketList(Request $request): Response
+    {
+        $ticketsRep = $this->doctrine->getRepository(Ticket::class);
+        $tickets = $ticketsRep->findAll();
+
+        return $this->render('admin/dashboard/list-ticket.html.twig', [
+            'tickets' => $tickets,
         ]);
     }
 }
