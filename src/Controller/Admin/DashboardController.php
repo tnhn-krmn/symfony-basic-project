@@ -34,7 +34,7 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/ticket-new', name: 'ticket_new')]
+    #[Route('/admin/category-new', name: 'category_new')]
     public function categoryAdd(Request $request): Response
     {
         $category = new Category();
